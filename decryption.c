@@ -12,29 +12,33 @@ void decryptMessage(char *message, int key)
 				for (int i=0; message[i] != '\0'; i++)
 				{
 								j = 0;
-								if (message[i] == ' ')
+								switch (message[i])
 								{
-												message [i] = ' ';
-								}
-								else if (message[i] == '.'){
-												message[i] = '.';
-								}
-								else{
+												case ' ':
+																message[i] = ' ';
+												case '.':
+																message[i] = '.';
+												case '\n':
+																message[i] = ' ';
+												default:
 												while(message[i] != alphabetPerso[j])
 												{
 																j++;
+																if(j > 26)
+																{
+																				break;
+																}
 												}
-								
-								
-								index = j - key;
-								if (index < 0){
-												index += 26;
-								}
-								message[i] = alphabet[index];
-								}
+												index = j - key;
+												if (index < 0){
+																index += 26;
+												}
+												message[i] = alphabet[index];
+												}
 				}
+				
 
-				printf("Message decrypté : %s\n", message);
+				printf("Message décrypté : %s\n", message);
 
 }
 
