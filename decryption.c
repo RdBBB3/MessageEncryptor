@@ -5,7 +5,7 @@
 void decryptMessage(char *message, int key)
 {
 				const char alphabetPerso[26] = "9kzrx#wb$qpcnvh@&mdgy*o+a2";
-				char alphabet[26] = "abcdefghijklmnopqrstuvwxyz";
+				const char alphabet[26] = "abcdefghijklmnopqrstuvwxyz";
 				int j;
 				int index = 0;
 
@@ -15,6 +15,9 @@ void decryptMessage(char *message, int key)
 								if (message[i] == ' ')
 								{
 												message [i] = ' ';
+								}
+								else if (message[i] == '.'){
+												message[i] = '.';
 								}
 								else{
 												while(message[i] != alphabetPerso[j])

@@ -9,7 +9,13 @@ void encryptMessage(char *message)
 {
 
 				const char alphabet[26] = "9kzrx#wb$qpcnvh@&mdgy*o+a2";
-				const int key = rand() % 26;
+				int key = rand() % 26;
+
+				if (key == 0)
+				{
+								srand(time(0) + 46);
+								key = rand() % 26;				
+				}
 				
 				for (int i = 0; message[i] != '\0'; i++)
 				{
@@ -36,7 +42,7 @@ int main (void)
 				srand(time(0)+33);
 				char message[500];
 
-				printf("Entrez le message à décrypter \n");
+				printf("Entrez le message à encrypter \n");
 				fgets(message, 500, stdin);
 				
 				encryptMessage(message);
